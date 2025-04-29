@@ -27,7 +27,7 @@ function authenticateToken(req, res, next) {
 app.use('/auth', authRoutes);
 app.use('/products', authenticateToken, productRoutes);
 
-const PORT = 3000;
+const PORT = 1000;
 const HOST = process.env.DB_HOST;
 
 app.listen(PORT, () => {
