@@ -3,11 +3,11 @@ const bodyParser = require('body-parser');
 const productRoutes = require('./products');
 const authRoutes = require('./auth');
 const jwt = require('jsonwebtoken');
-
+require('dotenv').config();
 const app = express();
 app.use(bodyParser.json());
 
-const SECRET_KEY = 'abefghijklmnopqrstuvwxyz1_234567890jdfyhgtuasjgfdsbfeadbmfjdfbvchjdbv_edhs';
+const SECRET_KEY = 'aaasssdddddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwssddffeewwss';
 
 // Middleware to protect routes
 function authenticateToken(req, res, next) {
@@ -28,6 +28,8 @@ app.use('/auth', authRoutes);
 app.use('/products', authenticateToken, productRoutes);
 
 const PORT = 3000;
+const HOST = process.env.DB_HOST;
+
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://${HOST}:${PORT}`);
 });
